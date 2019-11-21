@@ -59,7 +59,7 @@ public class BasePage {
 
     //ReturnListOfElements
     public List<WebElement> listOfWebElements (By elementBy){
-        waitVisibility(elementBy);
+//        waitVisibility(elementBy);
         return driver.findElements(elementBy);
     }
 

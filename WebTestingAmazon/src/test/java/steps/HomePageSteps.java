@@ -20,8 +20,8 @@ public class HomePageSteps {
         this.homePage.goToHomePage();
     }
 
-    @When("^I go to \"([^\"]*)\"$")
-    public void iGoToSpecifiedScetionOnHomePage (String strSectionName){
-    this.homePage.verifySectionLinkOnHomePage(strSectionName);
+    @When("^I click on ([0-9]+)-th Product in \"([^\"]*)\"$")
+    public void iGoToSpecifiedScetionOnHomePage (int productNum, String strSectionName){
+    this.homePage.clickOnProductInSection(productNum,strSectionName);
     }
 }

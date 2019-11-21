@@ -1,5 +1,8 @@
 package Pages;
 
+        import java.util.Iterator;
+        import java.util.List;
+
         import org.openqa.selenium.By;
         import org.openqa.selenium.WebElement;
         import org.openqa.selenium.support.FindBy;
@@ -9,12 +12,8 @@ public class HomePage extends BasePage {
 
     private static final String HOME_PAGE_URL = "https://www.amazon.com";
 
-    @FindBy(css = "#hplogo")
-    private WebElement logo;
-
-    @FindBy(css = "input[name=q]")
-    private WebElement searchInput;
-
+//    @FindBy(xpath = "//*[contains(@id,'desktop-')]//div[1]/div[1]/h2/span[contains(text(),'Best Sellers in Kitchen & Dining')]")
+    private WebElement selectedSection;
 
     public HomePage() {
         PageFactory.initElements(driver, this);
@@ -25,8 +24,10 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    public HomePage verifySectionLinkOnHomePage(String sectionName) {
-        assertEquals(By.partialLinkText(sectionName), sectionName);
+    public HomePage clickOnProductInSection(int ProductNum, String sectionName) {
+       this.selectedSection.findElement(By.xpath("//*[contains(@id,'desktop-')]//div[1]/div[1]/h2/span[contains(text(),'"+sectionName+"')]"));
+//       if(selectedSection.)
+//        this.selectedSection.click();
         return this;
     }
 }

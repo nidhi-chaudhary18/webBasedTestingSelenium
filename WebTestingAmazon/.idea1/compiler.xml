@@ -7,10 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ust-task" />
+        <module name="Home" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="ust-task" target="6" />
+      <module name="ust-task" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
