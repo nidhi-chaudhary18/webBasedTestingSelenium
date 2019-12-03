@@ -13,10 +13,11 @@ public class HomePage extends BasePage {
 
     private static final String HOME_PAGE_URL = "https://www.amazon.com";
 
-    @FindBy(xpath = "//*[contains(@id,'desktop-')]//div[1]/div[1]/h2/span[contains(text(),'Best Sellers in Kitchen & Dining')]")
+//    @FindBy(xpath = "//*[contains(@id,'desktop-')]//div[1]/div[1]/span[contains(text(),'Best Sellers in Kitchen & Dining')]")
+    @FindBy(xpath = "//img[contains(@alt,'Mkeke Compatible with iPhone XR Screen Protector, iPhone 11 Screen Protector,Tempered Glass Film for Apple iPhone XR &...')]\")")
     private WebElement selectedSectionKitchenAndDining;
 
-    @FindBy(xpath = "//*[contains(@id,'desktop-')]//div[1]/div[1]/h2/span[contains(text(),'Best Sellers in Cell Phones & Accessories')]")
+    @FindBy(xpath = "//*[contains(@id,'desktop-')]//div[1]/div[1]/span[contains(text(),'Best Sellers in Cell Phones & Accessories')]")
     private WebElement selectedSectionCellphonesAndAccessories;
 
     private ProductPage productPage;
@@ -29,15 +30,12 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    public ProductPage clickOnProductInSection(int ProductNum, String sectionName) {
+    public void clickOnProductInSection(int ProductNum, String sectionName) {
         if(sectionName.equals("Best Sellers in Kitchen & Dining")){
-            this.selectedSectionKitchenAndDining.findElement(By.xpath(".//*ul[class*='a-unordered-list']li:nth-child(5)input[class*='button-input']")).click();
-            return productPage;
+            this.selectedSectionKitchenAndDining.click();
         }
         else if (sectionName.equals("Best Sellers in Cell Phones & Accessories")){
-            this.selectedSectionCellphonesAndAccessories.findElement(By.xpath(".//*ul[class*='a-unordered-list']li:nth-child(5)input[class*='button-input']")).click();
-            return productPage;
+            this.selectedSectionCellphonesAndAccessories.click();
         }
-        return null;
     }
 }
