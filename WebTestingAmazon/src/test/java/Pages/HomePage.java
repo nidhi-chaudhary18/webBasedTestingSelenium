@@ -37,11 +37,11 @@ public class HomePage extends BasePage {
     public void clickOnProductInSection(int ProductNum, String sectionName) {
         wait.forLoading(1000);
         if(sectionName.equals("Best Sellers in Kitchen & Dining")){
-            Assert.assertTrue("WebElement for section "+ sectionName + "is not visible",isElementPresent(selectedSectionKitchenAndDining));
+            Assert.assertTrue("WebElement for section "+ sectionName + " is not visible",isElementPresent(selectedSectionKitchenAndDining));
             this.selectedSectionKitchenAndDining.findElement(By.xpath(PRODUCT_XPATH_IN_SECTION+"["+ProductNum+"]")).click();
         }
         else if (sectionName.equals("Best Sellers in Cell Phones & Accessories")){
-            Assert.assertTrue("WebElement for section "+ sectionName + "is not visible",isElementPresent(selectedSectionCellphonesAndAccessories));
+            Assert.assertTrue("WebElement for section "+ sectionName + " is not visible",isElementPresent(selectedSectionCellphonesAndAccessories));
             this.selectedSectionCellphonesAndAccessories.findElement(By.xpath(PRODUCT_XPATH_IN_SECTION+"["+ProductNum+"]")).click();
 
         }
