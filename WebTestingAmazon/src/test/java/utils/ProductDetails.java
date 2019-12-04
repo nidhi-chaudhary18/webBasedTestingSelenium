@@ -18,6 +18,6 @@ public class ProductDetails {
     }
 
     public double getTotalPrice() {
-        return productPrice*quantity;
+        return productPrice * quantity;
     }
 }

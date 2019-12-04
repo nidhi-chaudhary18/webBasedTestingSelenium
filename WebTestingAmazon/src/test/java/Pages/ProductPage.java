@@ -31,14 +31,14 @@ public class ProductPage extends BasePage {
     public void addQuantityInShoppingKart(int iQuantity) {
         saveProductDetails(iQuantity);
         Select quantity = new Select(this.productQuantitydropdown);
-        Assert.assertTrue("Required Quantity is not left for this product",quantity.getOptions().size()>=iQuantity);
+        Assert.assertTrue("Required Quantity is not left for this product", quantity.getOptions().size() >= iQuantity);
         quantity.selectByValue(String.valueOf(iQuantity));
         this.addToCartButton.click();
     }
 
     public void saveProductDetails(int quantity) {
         productDetails = ProductDetails.getInstance();
-        productDetails.productPrice = Double.parseDouble(this.productPrice.getText().replace("$",""));
+        productDetails.productPrice = Double.parseDouble(this.productPrice.getText().replace("$", ""));
         productDetails.productName = this.productName.getText();
         productDetails.quantity = quantity;
 

@@ -1,15 +1,11 @@
 package steps;
 
-import org.openqa.selenium.WebDriver;
-
 import Pages.HomePage;
-import cucumber.api.java.en.When;
-import hooks.DriverSetup;
-import commons.Wait;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.When;
 
 public class HomePageSteps {
-   private HomePage homePage;
+    private HomePage homePage;
 
     public HomePageSteps() {
         this.homePage = new HomePage();
@@ -21,7 +17,7 @@ public class HomePageSteps {
     }
 
     @When("^I click on ([0-9]+)-th Product in \"([^\"]*)\"$")
-    public void iGoToSpecifiedScetionOnHomePage (int productNum, String strSectionName){
-    this.homePage.clickOnProductInSection(productNum,strSectionName);
+    public void iGoToSpecifiedScetionOnHomePage(int productNum, String strSectionName) {
+        this.homePage.clickOnProductInSection(productNum, strSectionName);
     }
 }

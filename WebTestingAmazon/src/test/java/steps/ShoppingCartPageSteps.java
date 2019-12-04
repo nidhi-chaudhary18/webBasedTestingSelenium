@@ -8,7 +8,7 @@ public class ShoppingCartPageSteps {
     private ShoppingCartPage shoppingCartPage;
 
     public ShoppingCartPageSteps() {
-      this.shoppingCartPage = new ShoppingCartPage();
+        this.shoppingCartPage = new ShoppingCartPage();
     }
 
     @Then("^I open shopping kart$")

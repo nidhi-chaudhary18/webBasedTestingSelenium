@@ -2,7 +2,6 @@ package steps;
 
 import Pages.ProductPage;
 import cucumber.api.java.en.And;
-import cucumber.api.java.en.Then;
 
 public class ProductPageSteps {
     private ProductPage productPage;
