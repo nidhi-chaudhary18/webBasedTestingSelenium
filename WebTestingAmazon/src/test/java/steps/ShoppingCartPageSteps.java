@@ -11,7 +11,7 @@ public class ShoppingCartPageSteps {
       this.shoppingCartPage = new ShoppingCartPage();
     }
 
-    @Then("^I Open shopping kart$")
+    @Then("^I open shopping kart$")
     public void iOpenShoppingKart() {
         this.shoppingCartPage.ClickOnOpenCartButton();
     }

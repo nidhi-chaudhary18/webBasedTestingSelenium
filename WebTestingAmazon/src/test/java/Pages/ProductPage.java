@@ -1,5 +1,6 @@
 package Pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -10,14 +11,15 @@ import utils.ProductDetails;
 public class ProductPage extends BasePage {
 
     public ProductDetails productDetails;
+
     @FindBy(xpath = "//span[contains(@id,'productTitle')]")
     private WebElement productName;
 
     @FindBy(xpath = "//span[@id='price_inside_buybox']")
     private WebElement productPrice;
 
-    @FindBy(xpath = "//select[@name='Quantity']")
-    private Select productQuantitydropdown;
+    @FindBy(xpath = "//select[@name='quantity']")
+    private WebElement productQuantitydropdown;
 
     @FindBy(xpath = "//input[@id='add-to-cart-button']")
     private WebElement addToCartButton;
@@ -28,13 +30,15 @@ public class ProductPage extends BasePage {
 
     public void addQuantityInShoppingKart(int iQuantity) {
         saveProductDetails(iQuantity);
-        this.productQuantitydropdown.selectByIndex(iQuantity);
+        Select quantity = new Select(this.productQuantitydropdown);
+        Assert.assertTrue("Required Quantity is not left for this product",quantity.getOptions().size()>=iQuantity);
+        quantity.selectByValue(String.valueOf(iQuantity));
         this.addToCartButton.click();
     }
 
     public void saveProductDetails(int quantity) {
         productDetails = ProductDetails.getInstance();
-        productDetails.productPrice = Integer.parseInt(this.productPrice.getText());
+        productDetails.productPrice = Double.parseDouble(this.productPrice.getText().replace("$",""));
         productDetails.productName = this.productName.getText();
         productDetails.quantity = quantity;
 

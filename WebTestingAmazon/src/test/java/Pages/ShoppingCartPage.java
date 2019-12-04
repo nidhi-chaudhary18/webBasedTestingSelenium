@@ -3,6 +3,7 @@ package Pages;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -11,8 +12,12 @@ import utils.ProductDetails;
 public class ShoppingCartPage extends BasePage {
 
     ProductDetails productDetails = ProductDetails.getInstance();
+
     @FindBy(xpath = "//a[@id='hlb-view-cart-announce']")
-    private WebElement viewCartButton;
+    private WebElement viewCartButtononPage;
+
+    @FindBy(xpath="//*[@id='attach-sidesheet-view-cart-button']/span/input")
+    private WebElement viewCartButtonSideSheet;
 
     @FindBy(xpath = "//span[contains(@class,'a-size-medium sc-product-title a-text-bold')]")
     private WebElement productTitleOnCartPage;
@@ -28,12 +33,17 @@ public class ShoppingCartPage extends BasePage {
     }
 
     public void ClickOnOpenCartButton() {
-        this.waitVisibility(By.xpath(String.valueOf(viewCartButton)));
-        this.viewCartButton.click();
-        this.waitVisibility(By.xpath(String.valueOf(productTitleOnCartPage)));
+        wait.forLoading(10000);
+        wait.waitWithSleep(5000);
+        if (isElementPresent(viewCartButtonSideSheet)) {
+            this.viewCartButtonSideSheet.click();
+        }
+        else if (isElementPresent(viewCartButtononPage))
+            this.viewCartButtononPage.click();
     }
 
     public void verifyProductNameAndPrice(){
+        wait.forElementToBeDisplayed(10,productTitleOnCartPage,"Product title");
         String expectedProductName = productDetails.productName;
         String expectedQuantity = String.valueOf(productDetails.quantity)+" items";
         Assert.assertTrue("Expected Product Name is " + expectedProductName + " instead of " + this.productTitleOnCartPage.getText(),

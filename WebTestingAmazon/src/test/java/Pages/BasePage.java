@@ -16,51 +16,18 @@ public class BasePage {
 
     protected WebDriver driver;
 //    protected Wait wait;
-    public WebDriverWait wait;
+    public Wait wait;
 
     public BasePage() {
         this.driver = DriverSetup.driver;
-        this.wait = new WebDriverWait(this.driver, 15);
+        this.wait = new Wait(this.driver);
     }
-
-    public void waitVisibility(By elementBy) {
-        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(elementBy));
+    public boolean isElementPresent(WebElement webElement) {
+        try {
+            webElement.isDisplayed();
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
     }
-
-    //Click Method
-    public void click (By elementBy) {
-        waitVisibility(elementBy);
-        driver.findElement(elementBy).click();
-    }
-
-    //Write Text
-    public void writeText (By elementBy, String text) {
-        waitVisibility(elementBy);
-        driver.findElement(elementBy).sendKeys(text);
-    }
-
-    //Read Text
-    public String readText (By elementBy) {
-        waitVisibility(elementBy);
-        return driver.findElement(elementBy).getText();
-    }
-
-    //Assert
-    public void assertEquals (By elementBy, String expectedText) {
-        waitVisibility(elementBy);
-        Assert.assertEquals(readText(elementBy), expectedText);
-    }
-
-    //RetrunSingleElement
-    public WebElement returnSingleElement (By elementBy){
-        waitVisibility(elementBy);
-        return driver.findElement(elementBy);
-    }
-
-    //ReturnListOfElements
-    public List<WebElement> listOfWebElements (By elementBy){
-//        waitVisibility(elementBy);
-        return driver.findElements(elementBy);
-    }
-
 }

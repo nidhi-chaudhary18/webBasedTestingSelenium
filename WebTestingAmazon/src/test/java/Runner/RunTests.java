@@ -7,7 +7,6 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/resources/common/webTestingAmazonProducts.feature",
-        glue= "",
-        strict = true)
+        glue= "")
 public class RunTests {
 }

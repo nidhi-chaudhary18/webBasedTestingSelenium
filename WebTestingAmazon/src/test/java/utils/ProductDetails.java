@@ -3,7 +3,7 @@ package utils;
 public class ProductDetails {
     private static ProductDetails productDetails;
     public String productName;
-    public int productPrice;
+    public double productPrice;
     public int quantity;
     public int totalPrice;
 
@@ -17,7 +17,7 @@ public class ProductDetails {
         return productDetails;
     }
 
-    public int getTotalPrice() {
+    public double getTotalPrice() {
         return productPrice*quantity;
     }
 }
