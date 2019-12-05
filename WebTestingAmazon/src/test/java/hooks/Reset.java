@@ -19,6 +19,7 @@ public class Reset {
         if (scenario.isFailed()) {
             saveScreenshotsForScenario(scenario);
         }
+        this.driver.close();
         this.driver.quit();
     }
 

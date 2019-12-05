@@ -45,7 +45,7 @@ public class ShoppingCartPage extends BasePage {
         String expectedQuantity = String.valueOf(productDetails.quantity) + " items";
         Assert.assertTrue(
                 "Expected Product Name is " + expectedProductName + " instead of " + this.productTitleOnCartPage
-                        .getText(), this.productTitleOnCartPage.getText().equals(expectedProductName));
+                        .getText(), this.productTitleOnCartPage.getText().contains(expectedProductName));
         Assert.assertTrue(
                 "Expected Quantity is " + expectedQuantity + " instead of " + this.productQuantityOnCartPage.getText(),
                 this.productQuantityOnCartPage.getText().contains(expectedQuantity));

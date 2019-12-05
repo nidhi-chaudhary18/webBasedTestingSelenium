@@ -10,13 +10,16 @@ public class HomePage extends BasePage {
 
     private static final String HOME_PAGE_URL = "https://www.amazon.com";
     private static final String PRODUCT_XPATH_IN_SECTION =
-            "//following-sibling::div[contains(@id,'desktop-')]//ul[contains(@class,'a-unordered-list')]/li";
+            "./../../..//ul[contains(@class,'a-unordered-list')]/li";
 
     @FindBy(xpath = "//*[contains(@id,'desktop-')]//*[contains(text(),'Best Sellers in Kitchen & Dining')]")
     private WebElement selectedSectionKitchenAndDining;
 
     @FindBy(xpath = "//*[contains(@id,'desktop-')]//*[contains(text(),'Best Sellers in Cell Phones & Accessories')]")
     private WebElement selectedSectionCellphonesAndAccessories;
+
+    @FindBy(xpath = "//*[contains(@id,'desktop-')]//*[contains(text(),'Best Sellers in Clothing, Shoes & Jewelry')]")
+    private WebElement selectedSectionClothingShoes;
 
     private ProductPage productPage;
 
@@ -31,6 +34,7 @@ public class HomePage extends BasePage {
 
     public void clickOnProductInSection(int ProductNum, String sectionName) {
         wait.forLoading(1000);
+        wait.waitWithSleep(15000);
         if (sectionName.equals("Best Sellers in Kitchen & Dining")) {
             Assert.assertTrue("WebElement for section " + sectionName + " is not visible",
                     isElementPresent(selectedSectionKitchenAndDining));
@@ -41,7 +45,11 @@ public class HomePage extends BasePage {
                     isElementPresent(selectedSectionCellphonesAndAccessories));
             this.selectedSectionCellphonesAndAccessories
                     .findElement(By.xpath(PRODUCT_XPATH_IN_SECTION + "[" + ProductNum + "]")).click();
-
+        } else if (sectionName.equals("Best Sellers in Clothing, Shoes & Jewelry")) {
+            Assert.assertTrue("WebElement for section " + sectionName + " is not visible",
+                    isElementPresent(selectedSectionClothingShoes));
+            this.selectedSectionClothingShoes.findElement(By.xpath(PRODUCT_XPATH_IN_SECTION + "[" + ProductNum + "]"))
+                                             .click();
         }
     }
 }
