@@ -5,10 +5,7 @@ Test scenarios are described in the feature files located here ./src/test/resour
 Installation
 You need to have Java 8 JDK installed along with maven.
 
-To run the tests locally with Chrome, install ChromeDriver from here and add its location to your system PATH.
-
-To run the tests locally with Firefox, install GeckoDriver from here and add its location to your system PATH.
-
+To run the tests locally with Chrome, install ChromeDriver from here
 To install all dependencies, run
 
 $ mvn clean install
